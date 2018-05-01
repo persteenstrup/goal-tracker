@@ -1,0 +1,15 @@
+<h1>Oh no, it looks like you missed these tasks! Last chance to check them off</h1>
+
+<button (click)="FailOverdue()">I didn't get the rest of them....</button>
+
+<div *ngFor="let goal of user._mygoals; let idx = index ">
+  <h2 *ngIf="goal.overdue.length > 0">{{goal.title}}</h2>
+  <ng-container *ngFor="let overdue of goal.overdue">
+    <div class="container">
+    <input class="goalCheck" type="checkbox" (click)="CompletedGoal(goal._id,overdue,idx)">
+    <p>{{overdue | amDateFormat:'LL'}}, {{overdue | amTimeAgo }}</p>
+  </div>
+  </ng-container>
+</div>
+
+<button (click)="FailOverdue()">I didn't get the rest of them....</button>

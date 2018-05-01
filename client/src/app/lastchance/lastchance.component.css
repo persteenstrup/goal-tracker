@@ -1,0 +1,16 @@
+.goalCheck{
+    display: inline-block;
+}
+
+p{
+    display:inline-block;
+}
+
+.containter{
+    display:block;
+}
+
+h2{
+    margin-top:2px;
+    margin-bottom:1px;
+}

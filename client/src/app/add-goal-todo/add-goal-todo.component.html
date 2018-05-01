@@ -1,0 +1,72 @@
+<form>
+  <input type="radio" name="selector" id="goal" checked (click)="ToggleGoal(true)">
+  <label for="goal">Recurring Goal</label>
+
+  <input type="radio" name="selector" id="todo" (click)="ToggleGoal(false)">
+  <label for="todo">One Time To Do</label>
+</form>
+
+<form *ngIf="goalBool" (submit)="ScheduleGoal(user._id)">
+  <label for="title">Title</label>
+  <input type="text" id="title" name="title" [(ngModel)]='goal.title'>
+  <p></p>
+  <input type="date" id="startdate" name="startdate" [(ngModel)]='goal.startdate' required>
+  <label for="startdate">Start Date</label>
+
+  <input type="checkbox" name="indefinite" id="indefinite" checked (click)="ToggleIndef()">
+  <label for="indefinite">Indefinite</label>
+  <p></p>
+  <input type="date" id="enddate" name="enddate" *ngIf="!indefinite"  [(ngModel)]='goal.enddate'>
+  <label for="enddate" *ngIf="!indefinite">End Date</label>
+
+  <h4>Schedule</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Sunday</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" name="sunday" id="sunday" [(ngModel)]='goal.sunday'></td>
+        <td><input type="checkbox" name="monday" id="monday" [(ngModel)]='goal.monday'></td>
+        <td><input type="checkbox" name="tuesday" id="tuesday" [(ngModel)]='goal.tuesday'></td>
+        <td><input type="checkbox" name="wednesday" id="wednesday" [(ngModel)]='goal.wednesday'></td>
+        <td><input type="checkbox" name="thursday" id="thursday" [(ngModel)]='goal.thursday'></td>
+        <td><input type="checkbox" name="friday" id="friday" [(ngModel)]='goal.friday'></td>
+        <td><input type="checkbox" name="saturday" id="saturday" [(ngModel)]='goal.saturday'></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <label for="weekfreq">Frequency</label>
+  <select id="weekfreq" name="weekfreq"  [(ngModel)]='goal.weekfreq'>
+    <option value="weekly">Repeat Weekly</option>
+    <option value="biweekly">Repeat Bi-Weekly</option>
+    <option value="monthly">Repeat Monthly</option>
+  </select>
+
+  <input type="submit" value="Schedule!">
+</form>
+
+
+<form *ngIf="!goalBool" (submit)="ScheduleTodo(user._id)">
+  <label for="title">Title</label>
+  <input type="text" id="title" name="title" [(ngModel)]='todo.title'>
+
+  <input type="checkbox" name="duedate" id="duedate" checked (click)="Toggleduedate()">
+  <label for="duedate">Due date?</label>
+  <p></p>
+  <input type="date" id="duedate" name="duedate" *ngIf="todoHasDueDate" [(ngModel)]='todo.duedate'>
+  <label for="duedate" *ngIf="todoHasDueDate">Due Date</label>
+
+  <p>{{todo | json}}</p>
+  <input type="submit" value="Create To do!">
+
+</form>

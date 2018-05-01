@@ -1,0 +1,11 @@
+<a href='/logout'>Logout</a>
+
+<h3>Hello {{user.fname}}!</h3>
+
+<p>{{user | json}}</p>
+
+<div *ngFor="let goal of user._mygoals">
+    <h3>{{goal.title}}</h3>
+</div>
+
+<button [routerLink]="['/setgoal']">Add Goal or To-Do</button>

@@ -1,0 +1,94 @@
+<h1>Welcome, please sign in or register!</h1>
+
+<form (submit) = "register()" name = "formdata" #formdata='ngForm'>
+  <label for="fname">First Name</label>
+  <input type="text" name='fname' id="fname"
+  required
+  minlength="2"
+  maxlength="24"
+  pattern="^[a-zA-Z ]+$"
+  [(ngModel)] = user.fname
+  #fname  = "ngModel"
+  >
+  <p class="valid" *ngIf="!fname.valid  && (fname.dirty || fname.touched)">First name must be at least 2 characters</p>
+  
+  <p></p>
+  <label for="lname">Last Name</label>
+  <input type="text" name='lname' id="lname"
+  required
+  minlength="2"
+  maxlength="24"
+  pattern="^[a-zA-Z ]+$"
+  [(ngModel)] = user.lname
+  #lname = "ngModel"
+  >
+  <p class="valid" *ngIf="!lname.valid && (lname.dirty || lname.touched)">Last name must be at least 2 characters</p>
+  
+  <p></p>
+  <label for="email">Email</label>
+  <input type="email" name='email' id="email"
+  required
+  minlength="5"
+  maxlength="24"
+  pattern = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+  [(ngModel)] = user.email
+  #email = "ngModel"
+  >
+  <p class="valid" *ngIf="email.invalid && (email.dirty || email.touched)">email must be valid</p>
+  
+
+  <p></p>
+  <label for="pswd">Password</label>
+  <input type="password" name='pswd'id="pswd"
+  required
+  minlength="8"
+  maxlength="24"
+  [(ngModel)] = user.pswd
+  #pswd = "ngModel"
+  >
+  <p class="valid" *ngIf="pswd.invalid && (pswd.dirty || pswd.touched)">Password must be at least 8 characters</p>
+  
+
+  <p></p>
+  <label for="pswd_conf">PW Confirmation</label>
+  <input type="password" name='pswd_conf'id="pswd_conf"
+  required
+  minlength="8"
+  maxlength="24"
+  [(ngModel)] = user.pswd_conf
+  #pswd_conf = "ngModel">
+  <p class="valid" *ngIf="!(user.pswd_conf == user.pswd)">Passwords must match!</p>
+
+  <input type = "submit" value = "submit" [disabled]= "formdata.status == 'INVALID'">
+
+</form>
+
+<form (submit) = "login()" name = "loginData" #loginData='ngForm'>
+
+  <label for="logEmail">Email</label>
+  <input type="email" name='logEmail' id="logEmail"
+  required
+  minlength="5"
+  maxlength="24"
+  pattern = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+  [(ngModel)] = userlogin.logEmail
+  #logEmail = "ngModel"
+  >
+  <p class="valid" *ngIf="logEmail.invalid && (logEmail.dirty || logEmail.touched)">email must be valid</p>
+  
+
+  <p></p>
+  <label for="logPswd">Password</label>
+  <input type="password" name='logPswd'id="logPswd"
+  required
+  minlength="8"
+  maxlength="24"
+  [(ngModel)] = userlogin.logPswd
+  #logPswd = "ngModel"
+  >
+  <p class="valid" *ngIf="logPswd.invalid && (logPswd.dirty || logPswd.touched)">Password must be at least 8 characters</p>
+  
+
+  <input type = "submit" value = "submit" [disabled]= "loginData.status == 'INVALID'">
+
+  </form>

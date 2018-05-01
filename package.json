@@ -1,0 +1,25 @@
+{
+  "name": "logreg2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dateformat": "^3.0.2",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "moment": "^2.20.1",
+    "mongoose": "^5.0.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.6.5"
+  }
+}
